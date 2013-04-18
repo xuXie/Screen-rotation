@@ -7,16 +7,24 @@
 //
 
 #import "AppDelegate.h"
-
+#import "RootViewController.h"
+#import "CustomNavigation.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    RootViewController *rootV = [[RootViewController alloc] init];
+
+    CustomNavigation *nga = [[CustomNavigation alloc] initWithRootViewController:rootV];
+    [self.window setRootViewController:nga];
+     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskAll;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
